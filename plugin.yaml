@@ -21,6 +21,7 @@ node_types:
                 key: { get_attribute: [SELF, key] }
                 password: { get_attribute: [SELF, password] }
                 port: { get_attribute: [SELF, port] }
+                delete_amqp_queues: false
         start:
           implementation: agent_installer.worker_installer.tasks.start
           inputs:
@@ -30,6 +31,7 @@ node_types:
                 key: { get_attribute: [SELF, key] }
                 password: { get_attribute: [SELF, password] }
                 port: { get_attribute: [SELF, port] }
+                delete_amqp_queues: false
         stop:
           implementation: agent_installer.worker_installer.tasks.stop
           inputs:
@@ -39,6 +41,7 @@ node_types:
                 key: { get_attribute: [SELF, key] }
                 password: { get_attribute: [SELF, password] }
                 port: { get_attribute: [SELF, port] }
+                delete_amqp_queues: false
         uninstall:
           implementation: agent_installer.worker_installer.tasks.uninstall
           inputs:
@@ -48,6 +51,7 @@ node_types:
                 key: { get_attribute: [SELF, key] }
                 password: { get_attribute: [SELF, password] }
                 port: { get_attribute: [SELF, port] }
+                delete_amqp_queues: false
         restart:
           implementation: agent_installer.worker_installer.tasks.restart
           inputs:
@@ -57,6 +61,7 @@ node_types:
                 key: { get_attribute: [SELF, key] }
                 password: { get_attribute: [SELF, password] }
                 port: { get_attribute: [SELF, port] }
+                delete_amqp_queues: false
       cloudify.interfaces.lifecycle:
         create:
           implementation: hostpool.cloudify_hostpool_plugin.tasks.acquire
@@ -84,6 +89,7 @@ node_types:
               default:
                 user: { get_attribute: [SELF, user] }
                 password: { get_attribute: [SELF, password] }
+                delete_amqp_queues: false
         start:
           implementation: windows_agent_installer.windows_agent_installer.tasks.start
           inputs:
@@ -91,6 +97,7 @@ node_types:
               default:
                 user: { get_attribute: [SELF, user] }
                 password: { get_attribute: [SELF, password] }
+                delete_amqp_queues: false
         stop:
           implementation: windows_agent_installer.windows_agent_installer.tasks.stop
           inputs:
@@ -98,6 +105,7 @@ node_types:
               default:
                 user: { get_attribute: [SELF, user] }
                 password: { get_attribute: [SELF, password] }
+                delete_amqp_queues: false
         uninstall:
           implementation: windows_agent_installer.windows_agent_installer.tasks.uninstall
           inputs:
@@ -105,6 +113,7 @@ node_types:
               default:
                 user: { get_attribute: [SELF, user] }
                 password: { get_attribute: [SELF, password] }
+                delete_amqp_queues: false
         restart:
           implementation: windows_agent_installer.windows_agent_installer.tasks.restart
           inputs:
@@ -112,3 +121,4 @@ node_types:
               default:
                 user: { get_attribute: [SELF, user] }
                 password: { get_attribute: [SELF, password] }
+                delete_amqp_queues: false
